@@ -1,0 +1,32 @@
+# Copyright 2020 Max Planck Society. All rights reserved.
+# 
+# Author: Alonso Marco Valle (amarcovalle/alonrot) amarco(at)tuebingen.mpg.de
+# Affiliation: Max Planck Institute for Intelligent Systems, Autonomous Motion
+# Department / Intelligent Control Systems
+# 
+# This file is part of EntropySearchCpp.
+# 
+# EntropySearchCpp is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option) any
+# later version.
+# 
+# EntropySearchCpp is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+# 
+# You should have received a copy of the GNU General Public License along with
+# EntropySearchCpp.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+my_3Darray:
+- - [0.13606855870866374, 0.549860201836332, 0.622055131485066]
+  - [0.8692922076400893, 0.1449547982237268, 0.3509523808922709]
+  - [0.5797045873655702, 0.8530311177218937, 0.5132495398670534]
+- - [0.40180803375194174, 0.12331893483516554, 0.4172670690843695]
+  - [0.07596669169084191, 0.18390778828241672, 0.04965443032574213]
+  - [0.23991615355365803, 0.23995252566490277, 0.9027161099152811]
+- - [0.944787189721646, 0.33771940982137716, 0.11120275529378743]
+  - [0.49086409246807994, 0.900053846417662, 0.7802520683211379]
+  - [0.48925263840001887, 0.36924678112021503, 0.38973883696125344]

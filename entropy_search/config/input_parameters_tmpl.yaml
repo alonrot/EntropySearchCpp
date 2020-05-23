@@ -1,0 +1,73 @@
+# Copyright 2020 Max Planck Society. All rights reserved.
+# 
+# Author: Alonso Marco Valle (amarcovalle/alonrot) amarco(at)tuebingen.mpg.de
+# Affiliation: Max Planck Institute for Intelligent Systems, Autonomous Motion
+# Department / Intelligent Control Systems
+# 
+# This file is part of EntropySearchCpp.
+# 
+# EntropySearchCpp is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option) any
+# later version.
+# 
+# EntropySearchCpp is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+# 
+# You should have received a copy of the GNU General Public License along with
+# EntropySearchCpp.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+# << Note >>
+# Template. Letf here for testing purposes
+# Some of the members of insetup.hpp may not be declared here
+
+# Variables:
+Dim:             1
+Nrepresenters:  50
+# Nrepresenters:  100
+Nsubsamples:    5
+Nline_searches: 20
+T:              200
+# T:              100
+Ndiv_plot:      200
+# Ndiv_plot:      50
+Nwarm_starts:   5
+MaxEvals:       10
+write2file:     false # Logging data into .m files
+write_matrices_to_file: false
+read_for_test_dH_MC_local_flag: false
+read_for_test_SampleBeliefLocations_flag: false
+name_evalfun:   "syn_fun1D_tmpl.yaml" # This file has to exist inside config/
+# name_evalfun:   "syn_fun2D_tmpl.yaml" # This file has to exist inside config/
+
+# Path to plot with python:
+path2pyplot: "plotting/data"
+write2pyplot: true
+plot_true_function: true
+
+# Domain:
+xmin_s:         0.0
+xmax_s:         1.0
+
+# Gaussian process:
+which_kernel:   "CovSum ( CovSEard, CovNoise)" # Don't use "CovSum ( CovNoise, CovSEard )", as this will mess up with the order of the hyperparameters in the code.
+lengthscale_s:  [0.1] # DO NOT remove the brackets, even if it's for one dimension
+# lengthscale_s:  [0.1,0.2] # DO NOT remove the brackets, even if it's for one dimension
+prior_std_s:    2.0
+prior_std_n:    0.1
+learn_hypers:   false # Feature not implemented yet
+
+# Initial data:
+Ndata_init:     0
+# X_init:
+#   - 0.1
+#   - 0.6
+# Y_init:
+#   
+
+
+# Notes for documentation:
+# Do not erase the config/ folder, as the compiler will look for it

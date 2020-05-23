@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>   
+<name>entropy_search</name>
+<version>1.0.0</version>
+<description>entropy search</description>
+<license>None</license>
+<author>Alonso Marco</author>
+<author>Philipp Hennig</author>
+<maintainer email="amarco@tuebingen.mpg.de">Alonso Marco</maintainer>
+<buildtool_depend>catkin</buildtool_depend>
+<build_depend>libgp</build_depend> 
+<build_depend>YAML_CPP</build_depend>    
+<run_depend>libgp</run_depend>
+<run_depend>YAML_CPP</run_depend>
+<export>   </export>
+</package>

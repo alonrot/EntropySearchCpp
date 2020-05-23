@@ -1,0 +1,5 @@
+*~
+.DS_Store
+build
+entropy_search/tests/matlab
+CATKIN_IGNORE

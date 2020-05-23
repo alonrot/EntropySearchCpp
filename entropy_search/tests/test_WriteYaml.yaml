@@ -1,0 +1,75 @@
+# Copyright 2020 Max Planck Society. All rights reserved.
+# 
+# Author: Alonso Marco Valle (amarcovalle/alonrot) amarco(at)tuebingen.mpg.de
+# Affiliation: Max Planck Institute for Intelligent Systems, Autonomous Motion
+# Department / Intelligent Control Systems
+# 
+# This file is part of EntropySearchCpp.
+# 
+# EntropySearchCpp is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option) any
+# later version.
+# 
+# EntropySearchCpp is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+# 
+# You should have received a copy of the GNU General Public License along with
+# EntropySearchCpp.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+vec:
+  - 0.2299211105471111
+  - 0.2841049652938288
+  - 0.9521516933814398
+mat:
+  -
+    - 0.8135106618579062
+    - 0.8500096583040475
+    - 0.09776791329391665
+    - -0.3565684097616786
+  -
+    - 0.6736938458279211
+    - 0.1123271161282096
+    - -0.8146812691421627
+    - -0.8452628645325373
+  -
+    - 0.7724668298719761
+    - -0.1181592331818115
+    - -0.3480904723275874
+    - -0.332964198353218
+array3D:
+  -
+    -
+      - 0.3882813283187716
+      - -0.2590083066648843
+      - 0.2826192124200142
+      - -0.33546129303773
+    -
+      - -0.1557149464058294
+      - 0.8473898832906921
+      - -0.01889685681969711
+      - -0.09795208512710041
+    -
+      - 0.8988957572257592
+      - 0.08176846666343907
+      - 0.400527431350447
+      - -0.280694731176223
+  -
+    -
+      - 0.3636531212197864
+      - -0.3060357390465381
+      - -0.3044740424046638
+      - 0.8654672400399424
+    -
+      - -0.08199165904987216
+      - 0.4573338448336972
+      - 0.7047693048160379
+      - -0.09209664868754175
+    -
+      - -0.03381365120122848
+      - 0.4099301199474978
+      - -0.9422939568489296
+      - 0.1316255084851876

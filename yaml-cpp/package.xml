@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>   
+<name>YAML_CPP</name>
+<version>1.0.0</version>
+<description>fork of https://github.com/jbeder/yaml-cpp</description>
+<license>None</license>
+<author>Jesse Beder</author>
+<maintainer email="alonso.marcovalle@tuebingen.mpg.de">Alonso Marco Valle</maintainer>
+<buildtool_depend>catkin</buildtool_depend>
+<export>   </export>
+</package>
