@@ -151,7 +151,7 @@ which are rewritten at each iteration.
 Plotting is possible in one dimensional problems. To this end, open another terminal and run
 ```bash
 cd <path/to/workspace>/src/EntropySearchCpp/entropy_search
-python python plotting/plotES.py
+python plotting/plotES.py
 ```
 A window should appear (see the figure above) with plots of the evolution of Entropy Search over iterations (unless it's the first time, in which case the window should show empty plots). Then, in the other terminal execute entropy search (i.e., run `runES_onedim`). You should see how the plotting changes as iterations pass.
 
