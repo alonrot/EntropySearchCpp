@@ -140,12 +140,12 @@ All the input parameters are initialized in the following yaml file:
 
 > The names of the generated executables can be found in `<path/to/workspace>/src/EntropySearchCpp/entropy_search/CMakeLists.txt`
 
-> The generated data is stored in the following files
-> ```bash
-  <path/to/workspace>/src/EntropySearchCpp/entropy_search/examples/runES_onedim/output/progress_log.yaml
-  <path/to/workspace>/src/EntropySearchCpp/entropy_search/examples/runES_onedim/output/tmp.yaml
-  ```
-> which are rewritten at each iteration.
+The generated data is stored in the following files
+```bash
+<path/to/workspace>/src/EntropySearchCpp/entropy_search/examples/runES_onedim/output/progress_log.yaml
+<path/to/workspace>/src/EntropySearchCpp/entropy_search/examples/runES_onedim/output/tmp.yaml
+```
+which are rewritten at each iteration.
 
 ### Plotting
 Plotting is possible in one dimensional problems. To this end, open another terminal and run
