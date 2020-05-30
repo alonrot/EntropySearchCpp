@@ -118,20 +118,47 @@ This will delete the folders generated during compilation, i.e.,
 <path/to/workspace>/.catkin_tools
 ```
 
+6. Install a few more packages to allow execution of python plotting scripts
+```bash
+pip install numpy
+pip install matplotlib
+pip install pyyaml
+```
+
 > This installation was tested on macOS Catalina 10.15.2, Xcode 11.3.1, git 2.21.0, pip 20.0.2
 
 Example
 =======
-pip install numpy
-pip install matplotlib
-pip install pyyaml
-
-
 The above installation procedure compiles an example binary that illustrates how Entropy Search works in a one-dimensional problem. To run the compiled example type
 ```bash
-runES
+runES_onedim
 ```
-You can see the generated binaries in `<path/to/workspace>/src/EntropySearchCpp/entropy_search/CMakeLists.txt`
+All the input parameters are initialized in the following yaml file:
+```bash
+<path/to/workspace>/src/EntropySearchCpp/entropy_search/config/input_parameters_tmpl.yaml
+```
+
+> The names of the generated executables can be found in `<path/to/workspace>/src/EntropySearchCpp/entropy_search/CMakeLists.txt`
+
+> The generated data is stored in the following files
+> ```bash
+  <path/to/workspace>/src/EntropySearchCpp/entropy_search/examples/runES_onedim/output/progress_log.yaml
+  <path/to/workspace>/src/EntropySearchCpp/entropy_search/examples/runES_onedim/output/tmp.yaml
+  ```
+> which are rewritten at each iteration.
+
+### Plotting
+Plotting is possible in one dimensional problems. To this end, open another terminal and run
+```bash
+cd <path/to/workspace>/src/EntropySearchCpp/entropy_search/plotting
+python plotES
+```
+A window should appear (see the figure above) with plots of the evolution of Entropy Search over iterations (unless it's the first time, in which case the window should show empty plots). Then, in the other terminal execute entropy search (i.e., run `runES_onedim`). You should see how the plotting changes as iterations pass.
+
+> Because the plotting script and the c++ code are both writing and reading the same file (examples/runES_onedim/output/tmp.yaml), a few adjustments were made to ensure the python script doesn't crash. For example, the ES iterations are delayed on purpose a couple seconds. If you want to execute Entropy Search without plotting, simply set to false the following parameters in `<path/to/workspace>/src/EntropySearchCpp/entropy_search/config/input_parameters_tmpl.yaml`
+```yaml
+write2pyplot: false
+```
 
 Contact information
 ===================
