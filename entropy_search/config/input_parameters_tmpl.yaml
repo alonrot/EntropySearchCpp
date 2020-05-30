@@ -29,12 +29,12 @@ Dim:             1
 Nrepresenters:  50
 # Nrepresenters:  100
 Nsubsamples:    5
-Nline_searches: 20
+Nline_searches: 30
 T:              200
 # T:              100
 Ndiv_plot:      200
 # Ndiv_plot:      50
-Nwarm_starts:   5
+Nwarm_starts:   10
 MaxEvals:       10
 write2file:     false # Logging data into .m files
 write_matrices_to_file: false

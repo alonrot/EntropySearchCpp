@@ -14,6 +14,8 @@ This code has been used to automatically tune parameters of a whole-body Linear 
 	IEEE International Conference on Robotics and Automation (ICRA),
 	2016, accepted.
 
+![ES_inter_stage](./pics/ES_inter_stage.png)
+
 Authors
 =======
 This code has been possible thanks to a collaborative effort of the following people:
