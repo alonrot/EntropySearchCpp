@@ -893,36 +893,45 @@ EntropySearch::run(void) {
 																				x_most_informative);
 	  }
 
-  // Progress log:
-  std::cout << std::endl;
-  std::cout << "    List of global minimums" << std::endl;
-  std::cout << "    =======================" << std::endl;
-  for(size_t i=0;i<numiter+1;++i){
-    std::cout << "     " << i+1 << ") [" << this->global_min_esti_x.row(i) << "]" << 
-    ", mu(x_bg) = " << this->global_min_esti_mux(i) <<
-    ", var(x_bg) = " << this->global_min_esti_varx(i) << std::endl;
-  }
+		// Progress log:
+		std::cout << std::endl;
+		std::cout << "    List of global minimums" << std::endl;
+		std::cout << "    =======================" << std::endl;
+		for(size_t i=0;i<numiter+1;++i){
+		  std::cout << "     " << i+1 << ") [" << this->global_min_esti_x.row(i) << "]" << 
+		  ", mu(x_bg) = " << this->global_min_esti_mux(i) <<
+		  ", var(x_bg) = " << this->global_min_esti_varx(i) << std::endl;
+		}
 
-  std::cout << std::endl;
-  std::cout << "    List of evaluations" << std::endl;
-  std::cout << "    =======================" << std::endl;
-  for(size_t i=0;i<in->gp->get_sampleset_size();++i){
-    std::cout << "     " << i+1 << ") X = [" << in->gp->get_sampleset()->x(i).transpose() << "]" << 
-    ", y(X) = " << in->gp->get_sampleset()->y(i) << std::endl;
-  }
+		std::cout << std::endl;
+		std::cout << "    List of evaluations" << std::endl;
+		std::cout << "    =======================" << std::endl;
+		for(size_t i=0;i<in->gp->get_sampleset_size();++i){
+		  std::cout << "     " << i+1 << ") X = [" << in->gp->get_sampleset()->x(i).transpose() << "]" << 
+		  ", y(X) = " << in->gp->get_sampleset()->y(i) << std::endl;
+		}
 
 
-  // Log data to a yaml file:
-	LoggingTools::write_progress(this->in->path2data_logging_absolute,
-															this->in->Dim,
-															this->in->gp,
-															this->global_min_esti_x,	
-															this->global_min_esti_mux,
-															this->global_min_esti_varx);
+		// Log data to a yaml file:
+		LoggingTools::write_progress(this->in->path2data_logging_absolute,
+																this->in->Dim,
+																this->in->gp,
+																this->global_min_esti_x,	
+																this->global_min_esti_mux,
+																this->global_min_esti_varx);
 
 	  // Update counter:
 		++numiter;
-	}
+
+		if(this->in->write2pyplot && this->in->Dim <= 2){
+			if(this->in->sleep_time != 0){
+				std::cout << "    Sleeping for sleep_time ..." << std::endl;
+				std::chrono::seconds dura(this->in->sleep_time);
+				std::this_thread::sleep_for(dura);
+			}
+		}
+
+	} // while
 
 
 	// Display information:

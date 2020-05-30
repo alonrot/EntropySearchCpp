@@ -68,6 +68,7 @@ typedef struct{
 	bool write2pyplot;
 	bool plot_true_function;
 	std::string path2data_logging_absolute;
+	size_t sleep_time;
 
 	// Vector of hyperparameters:
 	std::vector<Eigen::VectorXd> hyperparam_per_ker;

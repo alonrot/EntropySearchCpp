@@ -46,46 +46,48 @@ class ReadAndPlot():
 
 		logger.info("Loading plotting data from {0:s} ...".format(self.path2data))
 
-	def plot_ES(self):
+	def load_data(self):
 
 		# Convert to numpy array:
-		z_plot 	= np.array(self.my_node["z_plot"])
-		f_true 	= np.array(self.my_node["f_true"])
-		mpost 	= np.array(self.my_node["mpost"])
-		stdpost = np.array(self.my_node["stdpost"])
-		Xdata 	= np.array(self.my_node["Xdata"])
-		Ydata 	= np.array(self.my_node["Ydata"])
-		dH_plot = np.array(self.my_node["dH_plot"])
-		EdH_max = np.array(self.my_node["EdH_max"])
-		x_next 	= np.array(self.my_node["x_next"])
-		mu_next = np.array(self.my_node["mu_next"])
+		self.z_plot 	= np.array(self.my_node["z_plot"])
+		self.f_true 	= np.array(self.my_node["f_true"])
+		self.mpost 	= np.array(self.my_node["mpost"])
+		self.stdpost = np.array(self.my_node["stdpost"])
+		self.Xdata 	= np.array(self.my_node["Xdata"])
+		self.Ydata 	= np.array(self.my_node["Ydata"])
+		self.dH_plot = np.array(self.my_node["dH_plot"])
+		self.EdH_max = np.array(self.my_node["EdH_max"])
+		self.x_next 	= np.array(self.my_node["x_next"])
+		self.mu_next = np.array(self.my_node["mu_next"])
 
-		assert z_plot.shape[1] == 1, "This plotting tool is tailored for 1D"
+		assert self.z_plot.shape[1] == 1, "This plotting tool is tailored for 1D"
 
 		# Adjust data shape:
-		Npoints = z_plot[:,0].shape[0]
-		z_plot = z_plot[:,0]
-		if mpost.shape[0] > Npoints:
-			mpost = mpost[0:Npoints]
-			stdpost = stdpost[0:Npoints]
-			f_true = f_true[0:Npoints]
-			dH_plot = dH_plot[0:Npoints]
+		Npoints = self.z_plot[:,0].shape[0]
+		self.z_plot = self.z_plot[:,0]
+		if self.mpost.shape[0] > Npoints:
+			self.mpost = mpost[0:Npoints]
+			self.stdpost = stdpost[0:Npoints]
+			self.f_true = f_true[0:Npoints]
+			self.dH_plot = dH_plot[0:Npoints]
+
+	def plot_ES(self):
 
 		# GP posterior:
 		self.axes_GPobj.cla()
 		self.axes_GPobj.grid(True)
 		self.axes_GPobj.set_xlim([0,1])
-		self.axes_GPobj.plot(z_plot, mpost, 'r', lw=1)
-		self.axes_GPobj.fill_between(z_plot, mpost-2*stdpost, mpost+2*stdpost, alpha=0.2, color='r')
+		self.axes_GPobj.plot(self.z_plot, self.mpost, 'r', lw=1)
+		self.axes_GPobj.fill_between(self.z_plot, self.mpost-2*self.stdpost, self.mpost+2*self.stdpost, alpha=0.2, color='r')
 
 		# Prior function:
-		self.axes_GPobj.plot(z_plot,f_true,'k--')
+		self.axes_GPobj.plot(self.z_plot,self.f_true,'k--')
 
 		# Data:
-		self.axes_GPobj.plot(Xdata,Ydata,'bo')
+		self.axes_GPobj.plot(self.Xdata,self.Ydata,'bo')
 
 		# Next evaluations:
-		self.axes_GPobj.plot(x_next,mu_next,'go')
+		self.axes_GPobj.plot(self.x_next,self.mu_next,'go')
 
 		self.axes_GPobj.set_title("Gaussian process", fontsize=12)
 		# plt.title("Prior (kernel:  %s)" % kernel, fontsize=12)
@@ -93,8 +95,8 @@ class ReadAndPlot():
 		self.axes_acqui.cla()
 		self.axes_acqui.grid(True)
 		self.axes_acqui.set_xlim([0,1])
-		self.axes_acqui.plot(z_plot, dH_plot, 'b')
-		self.axes_acqui.plot(x_next, EdH_max, 'bo')
+		self.axes_acqui.plot(self.z_plot, self.dH_plot, 'b')
+		self.axes_acqui.plot(self.x_next, self.EdH_max, 'bo')
 		self.axes_acqui.set_title("Acquisition function", fontsize=12)
 
 		plt.show(block=False)
@@ -122,7 +124,13 @@ class ReadAndPlot():
 		time.sleep(0.5)
 
 		while True:
-			self.plot_ES()
+
+			try:
+				self.load_data()
+				self.plot_ES()
+			except Exception as inst:
+				logger.info("Exception (!) type: {0:s} | args: {1:s}".format(str(type(inst)),str(inst.args)))
+				logger.info("Couldn't load data, probably because it was being still written ...")
 
 def main():
 

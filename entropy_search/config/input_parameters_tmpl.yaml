@@ -47,6 +47,8 @@ name_evalfun:   "runES_onedim/syn_fun1D_tmpl.yaml" # This file has to exist insi
 # path2pyplot: "plotting/data"
 write2pyplot: true
 plot_true_function: true
+sleep_time: 2 # When plotting, we delay each iteration of the Entropy Search main loop, so that python has time to 
+                # read and plot the existing data. This feature is only activated when Dim = 1 or Dim = 2
 
 # Domain:
 xmin_s:         0.0

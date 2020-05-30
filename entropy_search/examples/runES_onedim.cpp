@@ -50,6 +50,7 @@ int main (int argc, char const *argv[])
   double  xmin_s          = params.get<double>("xmin_s");
   double  xmax_s          = params.get<double>("xmax_s");
   bool    learn_hypers    = params.get<bool>("learn_hypers");
+  double  sleep_time      = params.get<double>("sleep_time");
   std::string which_kernel    = params.get<std::string>("which_kernel");
   std::string name_evalfun = params.get<std::string>("name_evalfun");
   std::string path2data_logging_relative = params.get<std::string>("path2data_logging_relative");
@@ -127,6 +128,7 @@ int main (int argc, char const *argv[])
   in->write2pyplot = write2pyplot;
   in->path2data_logging_absolute = path2data_logging_absolute;
   in->plot_true_function = plot_true_function;
+  in->sleep_time = sleep_time;
 
   // Gaussian process:
   in->gp = gp;

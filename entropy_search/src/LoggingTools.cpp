@@ -408,8 +408,6 @@ void LoggingTools::write_for_pyplot(	std::string path2store,
 
 		z_plot_i = z_plot.row(i);
 
-		std::cout << "z_plot_i = " << z_plot_i << std::endl;
-
 		// GP posterior mean and std:
 		mpost(i) = gp->f(z_plot_i.data());
 		var = gp->var(z_plot_i.data());
@@ -436,9 +434,6 @@ void LoggingTools::write_for_pyplot(	std::string path2store,
   YAML::Node node_to_write;
   node_to_write.SetStyle(YAML::EmitterStyle::Block);
 
-  std::cout << "z_plot(0) = " << z_plot(0) << std::endl;
-  std::cout << "z_plot(1) = " << z_plot(1) << std::endl;
-
   // Write into the node:
   node_to_write["z_plot"] = z_plot;
   node_to_write["dH_plot"] = dH_plot;
@@ -453,8 +448,6 @@ void LoggingTools::write_for_pyplot(	std::string path2store,
   node_to_write["numiter"] = numiter+1;
 
   // Define path to file:
-	// std::string file_name = path2store + "/tmp_iter_" + std::to_string(numiter+1) + ".yaml";
-	// std::string file_name = path2store + "/plot_data.yaml";
 	std::string file_name = path2store + "/tmp.yaml";
 
   // Write to file:
