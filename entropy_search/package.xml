@@ -6,6 +6,7 @@
 <license>None</license>
 <author>Alonso Marco</author>
 <author>Philipp Hennig</author>
+<author>Robert Eisele</author>
 <maintainer email="amarco@tuebingen.mpg.de">Alonso Marco</maintainer>
 <buildtool_depend>catkin</buildtool_depend>
 <build_depend>libgp</build_depend> 

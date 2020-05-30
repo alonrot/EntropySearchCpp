@@ -21,7 +21,7 @@
 #
 #
 # << Note >>
-# Template. Letf here for testing purposes
+# Template. Left here for testing purposes
 # Some of the members of insetup.hpp may not be declared here
 
 # Variables:
@@ -40,11 +40,11 @@ write2file:     false # Logging data into .m files
 write_matrices_to_file: false
 read_for_test_dH_MC_local_flag: false
 read_for_test_SampleBeliefLocations_flag: false
-name_evalfun:   "syn_fun1D_tmpl.yaml" # This file has to exist inside config/
+name_evalfun:   "runES_onedim/syn_fun1D_tmpl.yaml" # This file has to exist inside config/
 # name_evalfun:   "syn_fun2D_tmpl.yaml" # This file has to exist inside config/
 
 # Path to plot with python:
-path2pyplot: "plotting/data"
+# path2pyplot: "plotting/data"
 write2pyplot: true
 plot_true_function: true
 
@@ -59,6 +59,8 @@ lengthscale_s:  [0.1] # DO NOT remove the brackets, even if it's for one dimensi
 prior_std_s:    2.0
 prior_std_n:    0.1
 learn_hypers:   false # Feature not implemented yet
+
+path2data_logging_relative: "examples/runES_onedim/output"
 
 # Initial data:
 Ndata_init:     0

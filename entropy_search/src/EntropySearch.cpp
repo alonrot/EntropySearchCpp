@@ -711,13 +711,18 @@ EntropySearch::run(void) {
 					z_plot_single(i) = this->in->xmin_s + dz * i;
 				}
 
+				// std::cout << "this->in->Dim = " << this->in->Dim << std::endl;
 				if(this->in->Dim == 1){
 					
 					// Export true function:
 					z_plot = z_plot_single;
 					for(size_t i=0;i<Nel;++i){
+						// std::cout << "z_plot(i) = " << z_plot(i) << std::endl;
+						// std::cout << "z_plot_single(i) = " << z_plot_single(i) << std::endl;
 
 						z_plot_i = z_plot.row(i);
+
+						// std::cout << "z_plot_i(i) = " << z_plot_i(i) << std::endl;
 
 						// GP posterior mean and std:
 						this->EdH_objective->evaluate(z_plot_i,&dH_plot(i),&foo);

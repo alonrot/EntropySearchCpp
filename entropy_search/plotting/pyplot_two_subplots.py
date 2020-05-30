@@ -25,6 +25,7 @@ import numpy as np
 # matplotlib.use('TkAgg') 
 import matplotlib.pyplot as plt
 import yaml
+import pdb
 
 def plot_ES( docs ):
 
@@ -39,9 +40,19 @@ def plot_ES( docs ):
 	x_next 	= np.array(docs["x_next"])
 	mu_next = np.array(docs["mu_next"])
 
+	assert z_plot.shape[1] == 1, "This plotting tool is tailored for 1D"
+
 	fig = plt.figure(num=1, figsize=(12, 9), dpi=80, facecolor='w', edgecolor='k')
 	plt.subplot(211)
 	plt.grid(True)
+
+	Npoints = z_plot[:,0].shape[0]
+	z_plot = z_plot[:,0]
+	if mpost.shape[0] > Npoints:
+		mpost = mpost[0:Npoints]
+		stdpost = stdpost[0:Npoints]
+		f_true = f_true[0:Npoints]
+		dH_plot = dH_plot[0:Npoints]
 
 	# GP posterior:
 	plt.plot(z_plot, mpost, 'r', lw=1)
@@ -64,24 +75,15 @@ def plot_ES( docs ):
 	plt.plot(z_plot, dH_plot, 'b')
 	plt.plot(x_next, EdH_max, 'bo')
 
-	plt.show()
-
-	# ax = fig.gca()
-	# ax.set_xticks(numpy.arange(0, 1, 0.1))
-	# ax.set_yticks(numpy.arange(0, 1., 0.1))
-
-
-	# plt.tight_layout()
-
-	# fig.canvas.manager.window.raise_()
-
+	plt.show(block=False)
+	plt.pause(0.2)
 
 # Main:
 current_numiter = 0
 numiter = 0
 while current_numiter < 10 :
 
-	stream 	= open("data/tmp.yaml", "r")
+	stream 	= open("examples/runES_onedim/output/tmp.yaml", "r")
 	docs 		= yaml.load(stream)
 	numiter = np.array(docs["numiter"])
 

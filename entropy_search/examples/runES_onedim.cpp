@@ -52,7 +52,7 @@ int main (int argc, char const *argv[])
   bool    learn_hypers    = params.get<bool>("learn_hypers");
   std::string which_kernel    = params.get<std::string>("which_kernel");
   std::string name_evalfun = params.get<std::string>("name_evalfun");
-  std::string path2data_logging_absolute = params.get<std::string>("path2data_logging_absolute");
+  std::string path2data_logging_relative = params.get<std::string>("path2data_logging_relative");
 
   // DBG flags:
   bool    write2file                                = params.get<bool>("write2file");
@@ -79,7 +79,7 @@ int main (int argc, char const *argv[])
   gp->covf().set_loghyper(hyperparams);
 
   // Evaluation function:
-  std::string path2evalfun(std::string(YAML_CONFIG_PATH) + name_evalfun);
+  std::string path2evalfun(std::string(YAML_CONFIG_PATH) + "../examples/" + name_evalfun);
   std::shared_ptr<CostFunction> cost_function = std::make_shared<CostFunctionFromPrior>(Dim,Ndiv_plot,path2evalfun);
 
   // Add data:
@@ -98,7 +98,8 @@ int main (int argc, char const *argv[])
   }
 
   // Path to plot:
-  std::string path2pyplot_absolute(std::string(YAML_CONFIG_PATH) + "../" + path2data_logging_absolute);
+  std::string path2data_logging_absolute(std::string(YAML_CONFIG_PATH) + "../" + path2data_logging_relative);
+  std::cout << "path2data_logging_absolute = " << path2data_logging_absolute << std::endl;
 
   // Intialize input structure:
   std::shared_ptr<INSetup> in = std::make_shared<INSetup>();

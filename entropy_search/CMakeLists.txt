@@ -51,16 +51,16 @@ ADD_LIBRARY(${PROJECT_NAME}
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${catkin_LIBRARIES})
 
 # ----- Examples -----
-ADD_EXECUTABLE(runES examples/runES.cpp)
-TARGET_LINK_LIBRARIES(runES ${PROJECT_NAME})
+ADD_EXECUTABLE(runES_onedim examples/runES_onedim.cpp)
+TARGET_LINK_LIBRARIES(runES_onedim ${PROJECT_NAME})
 get_filename_component(CONFIG_PATH config/ ABSOLUTE)
-set_target_properties(runES PROPERTIES COMPILE_DEFINITIONS YAML_CONFIG_PATH="${CONFIG_PATH}/")
+set_target_properties(runES_onedim PROPERTIES COMPILE_DEFINITIONS YAML_CONFIG_PATH="${CONFIG_PATH}/")
 
 # ----- Tests -----
 # INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/tests/CMakeLists.txt)
 
 # # ----- Install ES -----
-# install(TARGETS runES
+# install(TARGETS runES_onedim
 #   RUNTIME DESTINATION bin
 #   LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}
 #   ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}
