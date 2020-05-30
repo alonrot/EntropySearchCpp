@@ -3,3 +3,4 @@
 build
 entropy_search/tests/matlab
 CATKIN_IGNORE
+entropy_search/examples/runES_onedim/output
