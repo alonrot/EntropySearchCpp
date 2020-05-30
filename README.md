@@ -26,7 +26,7 @@ This code has been possible thanks to a collaborative effort of the following pe
 Requirements
 ============
 This package requires:
-* [yaml-cpp](https://codedocs.xyz/jbeder/yaml-cpp.svg): [YAML 1.2 spec](http://www.yaml.org/spec/1.2/spec.html) parser and emitter in C++.
+* [yaml-cpp](https://codedocs.xyz/jbeder/yaml-cpp.svg): YAML parser and emitter in C++ ([YAML 1.2 spec](http://www.yaml.org/spec/1.2/spec.html))
 * [libgp](https://github.com/mblum/libgp): C++ library for Gaussian process regression
 * [cmake](http://www.cmake.org/): cross-platform, open-source build system
 * [Eigen3](http://eigen.tuxfamily.org/): template library for linear algebra
@@ -35,7 +35,7 @@ Compatible versions of `yaml-cpp` and `libgp` are included along with entropy_se
 
 Installation
 ============
-This is a catkin package, and thus, is meant to work with an existing [ROS](https://www.ros.org/) installation. However, if you don't have ROS installed, you can still use this package by installing catkin and catkin_tools from source. See below.
+This is a catkin package, and thus, is meant to work with an existing [ROS](https://www.ros.org/) installation. However, if you don't have ROS installed, you can still use this package by installing `catkin` and `catkin_tools` from source. See below.
 
 1. Create a conda environment with Python 3.6:
 ```bash
@@ -49,19 +49,19 @@ Make sure you're using the correct python. For this, the command
 ```bash
 which python
 ```
-has to spit out a path like the following:
+should show a path like the following:
 ```bash
 <path/to/anadonda>/envs/entropy_search/bin/python
 ```
-If it doesn't, open a new terminal.
+If it doesn't, open a new terminal and run again `conda activate entropy_search`
 
-2. Install catking tools following [these instructions](https://catkin-tools.readthedocs.io/en/latest/installing.html).
+2. Install catking tools as follows (cf. [original instructions](https://catkin-tools.readthedocs.io/en/latest/installing.html))
 ```bash
 sudo pip install catkin_tools
 pip install --upgrade empy
 ```
 
-3. Install catkin from [source](https://github.com/ros/catkin). To this end, download the source code wherever suits you best.
+3. Install the `catkin` package from [source](https://github.com/ros/catkin). To this end, download the source code wherever suits you best and install it.
 ```bash
 cd <path/that/suits/me/best>
 git clone git@github.com:ros/catkin.git
@@ -69,7 +69,7 @@ cd catkin
 python setup.py install
 ```
 
-4. Create a catkin workspace
+4. Create a `catkin` workspace
 ```bash
 mkdir -p <path/to/workspace>/src
 cd <path/to/workspace>/src
@@ -78,7 +78,7 @@ cd <path/to/workspace>
 catkin init
 ```
 
-5. Compile the Entropy Search code
+5. Compile the Entropy Search c++ code
 ```bash
 cd <path/to/workspace>
 catkin build
@@ -106,7 +106,16 @@ You can source your workspace as
 cd <path/to/workspace>
 source devel/setup.bash
 ```
-Finally, to wipe out the catkin workspace, use the command (see help with `catkin clean --help`)
+6. Install a few more packages to allow execution of python plotting scripts
+```bash
+pip install numpy
+pip install matplotlib
+pip install pyyaml
+```
+> This installation was tested on macOS Catalina 10.15.2, Xcode 11.3.1, git 2.21.0, pip 20.0.2
+
+### Tips
+If the compilation fails you can wipe out the catkin workspace and re-compile from scratch. To this end, use the command (see help with `catkin clean --help`)
 ```bash
 catkin clean --deinit
 ```
@@ -118,29 +127,20 @@ This will delete the folders generated during compilation, i.e.,
 <path/to/workspace>/.catkin_tools
 ```
 
-6. Install a few more packages to allow execution of python plotting scripts
-```bash
-pip install numpy
-pip install matplotlib
-pip install pyyaml
-```
-
-> This installation was tested on macOS Catalina 10.15.2, Xcode 11.3.1, git 2.21.0, pip 20.0.2
-
 Example
 =======
 The above installation procedure compiles an example binary that illustrates how Entropy Search works in a one-dimensional problem. To run the compiled example type
 ```bash
 runES_onedim
 ```
-All the input parameters are initialized in the following yaml file:
+> If the above command is not found, you should add the executables path to your path (see Installation, step 5).
+
+All the input parameters are initialized in the following configuration file:
 ```bash
 <path/to/workspace>/src/EntropySearchCpp/entropy_search/config/input_parameters_tmpl.yaml
 ```
 
-> The names of the generated executables can be found in `<path/to/workspace>/src/EntropySearchCpp/entropy_search/CMakeLists.txt`
-
-The generated data is stored in the following files
+As Entropy Search runs, it logs data to external files. Such data is stored in
 ```bash
 <path/to/workspace>/src/EntropySearchCpp/entropy_search/examples/runES_onedim/output/progress_log.yaml
 <path/to/workspace>/src/EntropySearchCpp/entropy_search/examples/runES_onedim/output/tmp.yaml
